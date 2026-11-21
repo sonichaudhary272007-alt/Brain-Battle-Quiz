@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Battle | Interactive Quiz Platform</title>
+    <meta name="description" content="Challenge your mind with Brain Battle - a modern interactive quiz platform with real-time feedback, multiple categories, and competitive stats.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND GLOW & TECH GRID -->
+    <div class="bg-grid-overlay"></div>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- NAVBAR (GLASSMORPHISM) -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="goHome()">
+                <div class="logo-icon-wrapper">
+                    <span class="logo-icon">🧠</span>
+                </div>
+                <h2>Brain<span>Battle</span></h2>
+                <span class="logo-badge">PRO</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#homeScreen" onclick="goHome()">Home</a>
+                <a href="#features" onclick="scrollToSection('features')">Features</a>
+                <a href="#howItWorks" onclick="scrollToSection('howItWorks')">How It Works</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="nav-cta-btn" onclick="showSelection()">
+                    Start Quiz <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <!-- =====================================
+             1. HOME SCREEN (PREMIUM SAAS LANDING)
+             ===================================== -->
+        <section class="hero" id="homeScreen">
+            <div class="hero-content">
+                <!-- Tag Pill -->
+                <div class="announcement-pill">
+                    <span class="pill-sparkle">✦</span>
+                    <span>Next-Gen Quiz Arena • Test Your Knowledge</span>
+                    <span class="pill-arrow">→</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="hero-title">
+                    Challenge Your Brain.
+                    <span class="gradient-text">Unlock Your Potential.</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="hero-subtitle">
+                    The ultimate interactive arena to test your skills, master diverse subjects,
+                    and track your intellect with real-time feedback and dynamic difficulty.
+                </p>
+
+                <!-- Hero CTA Buttons -->
+                <div class="hero-cta-group">
+                    <button class="primary-btn pulse-effect" onclick="showSelection()">
+                        <span class="btn-icon">⚡</span>
+                        <span>Start Challenge</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+
+                    <button class="secondary-btn glass-btn" onclick="scrollToSection('howItWorks')">
+                        <span class="btn-icon">🎮</span>
+                        <span>How It Works</span>
+                    </button>
+                </div>
+
+                <!-- Stats Row (Glassmorphic Cards) -->
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number-wrapper">
+                            <h3 class="stat-number">6+</h3>
+                        </div>
+                        <p class="stat-label">Knowledge Domains</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number-wrapper">
+                            <h3 class="stat-number">3</h3>
+                        </div>
+                        <p class="stat-label">Difficulty Tiers</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number-wrapper">
+                            <h3 class="stat-number">20</h3>
+                        </div>
+                        <p class="stat-label">Max Questions</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number-wrapper">
+                            <h3 class="stat-number">100%</h3>
+                        </div>
+                        <p class="stat-label">Real-time Feedback</p>
+                    </div>
+                </div>
+
+                <!-- HERO INTERACTIVE MOCKUP PREVIEW (Modeled on Image 1) -->
+                <div class="hero-preview-container">
+                    <div class="hero-preview-halo"></div>
+                    <div class="hero-preview-card">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="preview-title-chip">
+                                <span class="chip-dot"></span> Live Arena Preview
+                            </div>
+                            <div class="preview-tag">XP BOOSTED</div>
+                        </div>
+
+                        <div class="preview-body">
+                            <div class="preview-meta">
+                                <span class="preview-badge category-badge">💻 Computer Science</span>
+                                <span class="preview-badge diff-badge">⚡ Medium Tier</span>
+                                <span class="preview-badge xp-badge">🏆 +100 XP</span>
+                            </div>
+
+                            <p class="preview-question">
+                                "Which protocol is primarily used to securely browse encrypted websites over the internet?"
+                            </p>
+
+                            <div class="preview-options">
+                                <div class="preview-option"><span class="opt-key">A</span> HTTP</div>
+                                <div class="preview-option correct-demo"><span class="opt-key">B</span> HTTPS <span class="check-icon">✓</span></div>
+                                <div class="preview-option"><span class="opt-key">C</span> FTP</div>
+                                <div class="preview-option"><span class="opt-key">D</span> SMTP</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             2. QUIZ SELECTION SCREEN (GAMING STYLE)
+             ===================================== -->
+        <section class="selection-screen hidden" id="selectionScreen">
+            <div class="screen-wrapper">
+                
+                <div class="section-heading">
+                    <div class="badge-tag">
+                        <span>🎯 Mission Setup</span>
+                    </div>
+                    <h1>Customize Your Challenge</h1>
+                    <p>Select your preferred subject, difficulty grade, and question count.</p>
+                </div>
+
+                <!-- CATEGORY SELECTION -->
+                <div class="selection-group">
+                    <div class="group-header">
+                        <h2><span class="group-icon">🌍</span> Select Knowledge Domain</h2>
+                        <span class="group-hint">Choose 1 of 6 arenas</span>
+                    </div>
+
+                    <div class="category-container">
+                        <!-- General Knowledge (ID: 9) -->
+                        <div class="category-card active" onclick="selectCategory(this, 9)">
+                            <div class="card-glow"></div>
+                            <div class="card-icon-box">🌍</div>
+                            <div class="card-info">
+                                <h3>General Knowledge</h3>
+                                <p>World facts, trivia & culture</p>
+                            </div>
+                            <span class="selection-check">✓</span>
+                        </div>
+
+                        <!-- Computer Science (ID: 18) -->
+                        <div class="category-card" onclick="selectCategory(this, 18)">
+                            <div class="card-glow"></div>
+                            <div class="card-icon-box">💻</div>
+                            <div class="card-info">
+                                <h3>Computer Science</h3>
+                                <p>Coding, hardware & networks</p>
+                            </div>
+                            <span class="selection-check">✓</span>
+                        </div>
+
+                        <!-- Science (ID: 17) -->
+                        <div class="category-card" onclick="selectCategory(this, 17)">
+                            <div class="card-glow"></div>
+                            <div class="card-icon-box">🔬</div>
+                            <div class="card-info">
+                                <h3>Science & Nature</h3>
+                                <p>Physics, biology & chemistry</p>
+                            </div>
+                            <span class="selection-check">✓</span>
+                        </div>
+
+                        <!-- History (ID: 23) -->
+                        <div class="category-card" onclick="selectCategory(this, 23)">
+                            <div class="card-glow"></div>
+                            <div class="card-icon-box">📜</div>
+                            <div class="card-info">
+                                <h3>History</h3>
+                                <p>Ancient empires & global events</p>
+                            </div>
+                            <span class="selection-check">✓</span>
+                        </div>
+
+                        <!-- Sports (ID: 21) -->
+                        <div class="category-card" onclick="selectCategory(this, 21)">
+                            <div class="card-glow"></div>
+                            <div class="card-icon-box">⚽</div>
+                            <div class="card-info">
+                                <h3>Sports</h3>
+                                <p>Athletes, games & tournaments</p>
+                            </div>
+                            <span class="selection-check">✓</span>
+                        </div>
+
+                        <!-- Geography (ID: 22) -->
+                        <div class="category-card" onclick="selectCategory(this, 22)">
+                            <div class="card-glow"></div>
+                            <div class="card-icon-box">🗺️</div>
+                            <div class="card-info">
+                                <h3>Geography</h3>
+                                <p>Continents, capitals & flags</p>
+                            </div>
+                            <span class="selection-check">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- DIFFICULTY SELECTION -->
+                <div class="selection-group">
+                    <div class="group-header">
+                        <h2><span class="group-icon">⚡</span> Select Difficulty</h2>
+                        <span class="group-hint">Calibrate question complexity</span>
+                    </div>
+
+                    <div class="difficulty-container">
+                        <button class="difficulty-card active diff-easy" onclick="selectDifficulty(this, 'easy')">
+                            <div class="diff-glow"></div>
+                            <div class="diff-icon">🟢</div>
+                            <div class="diff-details">
+                                <span class="diff-name">Easy</span>
+                                <span class="diff-desc">Relaxed & straightforward</span>
+                            </div>
+                            <span class="diff-stars">★☆☆</span>
+                        </button>
+
+                        <button class="difficulty-card diff-medium" onclick="selectDifficulty(this, 'medium')">
+                            <div class="diff-glow"></div>
+                            <div class="diff-icon">🟡</div>
+                            <div class="diff-details">
+                                <span class="diff-name">Medium</span>
+                                <span class="diff-desc">Balanced intellectual challenge</span>
+                            </div>
+                            <span class="diff-stars">★★☆</span>
+                        </button>
+
+                        <button class="difficulty-card diff-hard" onclick="selectDifficulty(this, 'hard')">
+                            <div class="diff-glow"></div>
+                            <div class="diff-icon">🔴</div>
+                            <div class="diff-details">
+                                <span class="diff-name">Hard</span>
+                                <span class="diff-desc">Expert masterclass questions</span>
+                            </div>
+                            <span class="diff-stars">★★★</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- QUESTION COUNT SELECTION -->
+                <div class="selection-group">
+                    <div class="group-header">
+                        <h2><span class="group-icon">📝</span> Number of Questions</h2>
+                        <span class="group-hint">Choose challenge duration</span>
+                    </div>
+
+                    <div class="count-container">
+                        <button class="count-btn active" onclick="selectCount(this, 5)">
+                            <span class="count-num">5</span>
+                            <span class="count-label">Quick Blitz</span>
+                        </button>
+
+                        <button class="count-btn" onclick="selectCount(this, 10)">
+                            <span class="count-num">10</span>
+                            <span class="count-label">Standard</span>
+                        </button>
+
+                        <button class="count-btn" onclick="selectCount(this, 15)">
+                            <span class="count-num">15</span>
+                            <span class="count-label">Marathon</span>
+                        </button>
+
+                        <button class="count-btn" onclick="selectCount(this, 20)">
+                            <span class="count-num">20</span>
+                            <span class="count-label">Master Exam</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- ACTION CONTROLS -->
+                <div class="action-buttons-wrapper">
+                    <button class="secondary-btn glass-btn" onclick="goHome()">
+                        ← Back to Home
+                    </button>
+
+                    <button class="primary-btn pulse-effect" id="startChallengeBtn" onclick="beginChallenge()">
+                        <span>Start Challenge</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+
+                <p id="selectionError" class="error-message"></p>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             3. ACTUAL QUIZ SCREEN (GAMING HUD)
+             ===================================== -->
+        <section class="quiz-screen hidden" id="quizScreen">
+            <div class="quiz-container">
+
+                <!-- GAMING HUD STATUS BAR -->
+                <div class="quiz-hud-header">
+                    <div class="hud-left">
+                        <div class="hud-category-chip">
+                            <span class="hud-icon">🏆</span>
+                            <span id="questionCategory">General Knowledge</span>
+                        </div>
+                    </div>
+
+                    <div class="hud-center">
+                        <div class="hud-counter-pill">
+                            <span class="counter-label">TRACKER:</span>
+                            <span id="questionNumber" class="counter-val">Question 1 of 5</span>
+                        </div>
+                    </div>
+
+                    <div class="hud-right">
+                        <div class="hud-score-chip">
+                            <span class="score-icon">⚡</span>
+                            <span id="scoreDisplay" class="score-val">Score: 0</span>
+                        </div>
+
+                        <button class="hud-exit-btn" onclick="goHome()" title="Exit to Home">
+                            ✕ Exit
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- ANIMATED NEON PROGRESS BAR -->
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill">
+                            <span class="progress-glow-head"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- QUESTION DISPLAY CARD -->
+                <div class="question-card">
+                    <div class="card-ambient-edge"></div>
+
+                    <!-- Question Header Meta -->
+                    <div class="question-meta-row">
+                        <span class="badge-tag small">🧠 Active Question</span>
+                        <span class="timer-tag" id="difficultyBadge">Difficulty: Easy</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <h2 id="questionText" class="question-text">
+                        Loading your challenge questions...
+                    </h2>
+
+                    <!-- 4 Answer Options Container -->
+                    <div id="answerButtons" class="answer-container">
+                        <!-- Dynamically filled with gaming option cards -->
+                    </div>
+
+                    <!-- Real-time Answer Feedback Banner -->
+                    <div id="answerFeedback" class="feedback"></div>
+
+                    <!-- Next Question / Final Result Button -->
+                    <div class="next-btn-container">
+                        <button class="primary-btn next-btn hidden" id="nextButton" onclick="nextQuestion()" disabled>
+                            <span>Next Question</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             4. RESULT SCREEN (GAMING STATS DASHBOARD)
+             ===================================== -->
+        <section class="result-screen hidden" id="resultScreen">
+            <div class="result-container">
+                <div class="result-card">
+                    <div class="card-ambient-edge"></div>
+
+                    <!-- Celebration Header -->
+                    <div class="result-icon-wrapper">
+                        <div class="result-icon-halo"></div>
+                        <span class="result-icon">🏆</span>
+                    </div>
+
+                    <div class="badge-tag">
+                        <span>Challenge Completed</span>
+                    </div>
+
+                    <h1 class="result-title">Mission Accomplished!</h1>
+
+                    <p id="resultMessage" class="result-message">
+                        Sensational performance! You conquered this challenge.
+                    </p>
+
+                    <!-- CIRCULAR ACCURACY RING & SCORE (Modeled on Image 2's Mission Progress) -->
+                    <div class="result-hero-stats">
+                        <!-- Circular Accuracy Gauge -->
+                        <div class="circular-progress-box">
+                            <svg class="circular-chart" viewBox="0 0 36 36">
+                                <path class="circle-bg"
+                                      d="M18 2.0845
+                                         a 15.9155 15.9155 0 0 1 0 31.831
+                                         a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path id="accuracyCircle" class="circle"
+                                      stroke-dasharray="0, 100"
+                                      d="M18 2.0845
+                                         a 15.9155 15.9155 0 0 1 0 31.831
+                                         a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="circular-inner">
+                                <span id="percentage" class="circular-pct">0%</span>
+                                <span class="circular-label">ACCURACY</span>
+                            </div>
+                        </div>
+
+                        <!-- Final Score Box -->
+                        <div class="final-score-box">
+                            <span class="final-score-label">FINAL SCORE</span>
+                            <h2 id="finalScore" class="final-score-val">0 / 5</h2>
+                            <div class="rank-badge" id="rankBadge">
+                                <span>⭐ Trivia Master</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STATS DETAIL GRID -->
+                    <div class="result-stats-grid">
+                        <div class="stat-box stat-correct">
+                            <div class="stat-box-icon">✓</div>
+                            <div class="stat-box-content">
+                                <h3 id="correctAnswers">0</h3>
+                                <p>Correct Answers</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-box stat-wrong">
+                            <div class="stat-box-icon">✕</div>
+                            <div class="stat-box-content">
+                                <h3 id="wrongAnswers">0</h3>
+                                <p>Incorrect Answers</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-box stat-rating">
+                            <div class="stat-box-icon">⚡</div>
+                            <div class="stat-box-content">
+                                <h3 id="xpEarned">0 XP</h3>
+                                <p>Experience Gained</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="result-actions">
+                        <button class="primary-btn pulse-effect" onclick="restartQuiz()">
+                            <span>Play Again ↻</span>
+                        </button>
+
+                        <button class="secondary-btn glass-btn" onclick="showSelection()">
+                            <span>Change Challenge</span>
+                        </button>
+                    </div>
+
+                    <button class="text-link-btn" onclick="goHome()">
+                        Back to Home Screen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             5. FEATURES SECTION (SAAS CARDS)
+             ===================================== -->
+        <section class="features" id="features">
+            <div class="section-heading">
+                <div class="badge-tag">
+                    <span>✨ Key Highlights</span>
+                </div>
+                <h2>Why Play Brain Battle?</h2>
+                <p>Designed for quiz champions, learners, and trivia enthusiasts worldwide.</p>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature-card">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-box">🎯</div>
+                    <h3>Diverse Knowledge Domains</h3>
+                    <p>From General Trivia and Science to Code and Global History, test yourself across 6 curated categories.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-box">⚡</div>
+                    <h3>Tiered Difficulty Engine</h3>
+                    <p>Adapt questions to your skill tier: Easy, Medium, or Hard for tailored challenges and rewarding difficulty curves.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-glow"></div>
+                    <div class="feature-icon-box">📊</div>
+                    <h3>Instant Feedback & Analytics</h3>
+                    <p>Inspect immediate answer explanations, dynamic progress indicators, and comprehensive accuracy gauges upon completion.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             6. HOW IT WORKS SECTION
+             ===================================== -->
+        <section class="how-it-works" id="howItWorks">
+            <div class="section-heading">
+                <div class="badge-tag">
+                    <span>🎮 User Journey</span>
+                </div>
+                <h2>How It Works</h2>
+                <p>Get into the challenge arena in three effortless steps.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-badge">01</div>
+                    <div class="step-icon">⚙️</div>
+                    <h3>Customize Setup</h3>
+                    <p>Select your favorite category, choose from 3 difficulty grades, and decide the question count.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-badge">02</div>
+                    <div class="step-icon">⚡</div>
+                    <h3>Test Your Mind</h3>
+                    <p>Answer 4 unique options per question with instant visual feedback and live score tracking.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-badge">03</div>
+                    <div class="step-icon">🏆</div>
+                    <h3>Claim Your Rank</h3>
+                    <p>Review your accuracy circular meter, analyze right and wrong answers, and unlock master ranks.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">🧠 Brain Battle</span>
+                <p>Learn. Play. Compete. Empowering intellect through interactive trivia.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Brain Battle. Crafted for curious minds everywhere.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
